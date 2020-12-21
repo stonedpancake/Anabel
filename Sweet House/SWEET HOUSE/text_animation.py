@@ -423,6 +423,10 @@ class StartDialog:
 
     def question(self):
 
+        # ask: "Do you want to talk?" (trouble)
+        # trouble: буквы появляются вне последовательности
+        # reason: randint()
+
         self.screen.blit(self.D, (randint(0, 1920), randint(0, 1920)))
         display.flip()
         time.delay(1000)
