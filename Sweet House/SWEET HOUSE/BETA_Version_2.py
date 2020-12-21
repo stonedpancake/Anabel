@@ -1,5 +1,4 @@
 import sys
-
 import pygame
 import pygame_gui
 from pygame import *
@@ -84,12 +83,11 @@ class StartGame:
         self.screen.blit(self.windows_error, (0, 0))
         display.flip()
 
+        mouse.set_visible(False)
         time.delay(3000)
 
         mixer.music.load(self.noise_sound)
         mixer.music.play()
-
-        mouse.set_visible(False)
 
         self.screen.blit(self.noise, (0, 0))
         display.flip()
@@ -266,7 +264,7 @@ class Typing:
 
     def info(self):
 
-        text_animation.Animation().main_loop()
+        text_animation.InfoAnimation().main_loop()
 
     def loop(self):
 
