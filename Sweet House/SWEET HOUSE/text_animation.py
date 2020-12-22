@@ -3,6 +3,7 @@ from random import randint
 
 import pygame
 from pygame import display, font, Color, time, QUIT, KEYDOWN, K_ESCAPE, K_DELETE, mixer
+from pygame.constants import K_RIGHT
 
 
 class InfoAnimation:
@@ -365,29 +366,7 @@ class InfoAnimation:
 
         time.delay(4000)
 
-        StartDialog().main_loop()
-
-    def main_loop(self):
-
-        exit_ = False
-
-        while not exit_:
-
-            self.info()
-            display.flip()
-
-            for event_ in pygame.event.get():  # main events
-
-                if event_.type == QUIT:
-                    exit_ = True
-
-                if event_.type == KEYDOWN:
-
-                    if event_.key == K_ESCAPE:
-                        exit_ = True
-
-                    if event_.key == K_DELETE:
-                        sys.exit()
+        StartDialog().question()
 
 
 class StartDialog:
@@ -421,97 +400,132 @@ class StartDialog:
 
         self.que = self.font.render('?', True, Color('white'))
 
+        self.Y = self.font.render('Y', True, Color('white'))
+        self.e = self.font.render('e', True, Color('white'))
+        self.s = self.font.render('s', True, Color('white'))
+        self.slash = self.font.render('/', True, Color('white'))
+        self.N = self.font.render('N', True, Color('white'))
+        self.o = self.font.render('o', True, Color('white'))
+
+        self.talk_que = self.font.render('Do you want to talk?', True, Color('white'))
+
     def question(self):
-
-        # ask: "Do you want to talk?" (trouble)
-        # trouble: буквы появляются вне последовательности
-        # reason: randint()
-
-        self.screen.blit(self.D, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.D, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.o, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.o, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.y, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.y, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.o, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.o, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.u, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.u, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.w, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.w, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.a, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.a, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.n, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.n, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.t, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.t, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.t, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.t, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.o, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.o, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.t, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.t, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.a, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.a, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.l, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.l, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.k, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.k, (randint(300, 1700), randint(100, 900)))
         display.flip()
         time.delay(1000)
 
-        self.screen.blit(self.que, (randint(0, 1920), randint(0, 1920)))
+        self.screen.blit(self.que, (randint(300, 1700), randint(100, 900)))
+        display.flip()
+
+        time.delay(2500)
+
+        self.answer_text()
+
+    def answer_text(self):
+        self.screen.fill((0, 0, 0))
+
+        self.screen.blit(self.talk_que, (820, 510))
         display.flip()
         time.delay(1000)
 
-        while True:
-            pass
+        self.screen.blit(self.Y, (900, 540))
+        display.flip()
+        time.delay(1000)
 
-    def main_loop(self):
+        self.screen.blit(self.e, (920, 540))
+        display.flip()
+        time.delay(1000)
 
-        exit_ = False
+        self.screen.blit(self.s, (940, 540))
+        display.flip()
+        time.delay(1000)
 
-        while not exit_:
+        self.screen.blit(self.slash, (960, 540))
+        display.flip()
+        time.delay(1000)
 
-            self.question()
-            display.flip()
+        self.screen.blit(self.N, (980, 540))
+        display.flip()
+        time.delay(1000)
 
-            for event_ in pygame.event.get():  # main events
+        self.screen.blit(self.o, (1000, 540))
+        display.flip()
+        time.delay(1000)
 
-                if event_.type == QUIT:
-                    exit_ = True
 
-                if event_.type == KEYDOWN:
+class Dialog:
 
-                    if event_.key == K_ESCAPE:
-                        exit_ = True
+    def __init__(self):
+        self.screen = display.set_mode((1920, 1080))
+        self.screen.fill((0, 0, 0))
+        self.font = font.Font('./Materials/Kingthings Trypewriter 2.ttf', 24)
+        self.typing_sound = './Materials/typing_sound.mp3'
 
-                    if event_.key == K_DELETE:
-                        sys.exit()
+
+class Keyboard(Dialog):
+
+    def __init__(self):
+        super().__init__()
+
+        for event_ in pygame.event.get():
+
+            if event_.type == KEYDOWN:
+
+                if event_.key == K_RIGHT:
+                    pass

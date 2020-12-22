@@ -99,6 +99,9 @@ class StartGame:
     def loop_2(self):
 
         self.screen.fill((0, 0, 0))
+        display.flip()
+
+        time.delay(3000)
 
         exit_ = False
 
@@ -210,7 +213,8 @@ class Typing:
 
         self.screen.blit(self.e, (1050, 530))
         display.flip()
-        time.delay(400)
+
+        time.delay(1000)
 
         self.text_play()
 
@@ -264,7 +268,36 @@ class Typing:
 
     def info(self):
 
-        text_animation.InfoAnimation().main_loop()
+        text_animation.InfoAnimation().info()
+
+        self.answer()
+
+    def answer(self):
+
+        exit_ = False
+
+        while not exit_:
+
+            for event_ in pygame.event.get():  # main events
+
+                if event_.type == QUIT:
+                    exit_ = True
+
+                if event_.type == KEYDOWN:
+
+                    if event_.key == K_ESCAPE:
+                        exit_ = True
+
+                    if event_.key == K_DELETE:
+                        sys.exit()
+
+                    if event_.key == K_RIGHT:  # No
+                        pass
+
+                    if event_.key == K_LEFT:  # Yes
+
+                        text_animation.Dialog()
+                        display.flip()
 
     def loop(self):
 
