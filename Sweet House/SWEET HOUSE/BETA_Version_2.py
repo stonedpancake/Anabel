@@ -2,9 +2,11 @@ import sys
 import pygame
 import pygame_gui
 from pygame import *
-from pygame_gui import *
-from pygame.image import *
+from pygame.image import load
 import text_animation
+import YesNo
+import Keyboard
+import Anabel
 
 SIZE = WIDTH, HEIGHT = 1920, 1080
 
@@ -101,7 +103,7 @@ class StartGame:
         self.screen.fill((0, 0, 0))
         display.flip()
 
-        time.delay(3000)
+        time.delay(1000)
 
         exit_ = False
 
@@ -153,153 +155,15 @@ class StartGame:
 class Typing:
 
     def __init__(self):
-
         self.screen = display.set_mode(SIZE)
-
         self.font = font.Font('./Materials/Kingthings Trypewriter 2.ttf', 24)
-        self.typing_sound = './Materials/typing_sound.mp3'
-
-        self.w = self.font.render('w', True, Color('white'))
-        self.e = self.font.render('e', True, Color('white'))
-        self.l = self.font.render('l', True, Color('white'))
-        self.c = self.font.render('c', True, Color('white'))
-        self.o = self.font.render('o', True, Color('white'))
-        self.m = self.font.render('m', True, Color('white'))
-        self.e = self.font.render('e', True, Color('white'))
-
-        self.p = self.font.render('p', True, Color('white'))
-        self.l = self.font.render('l', True, Color('white'))
-        self.a = self.font.render('a', True, Color('white'))
-        self.y = self.font.render('y', True, Color('white'))
-
-        self.slash = self.font.render('/', True, Color('white'))
-
-        self.i = self.font.render('i', True, Color('white'))
-        self.n = self.font.render('n', True, Color('white'))
-        self.f = self.font.render('f', True, Color('white'))
-        self.o = self.font.render('o', True, Color('white'))
-
-        self.info_text = self.font.render("Sweet House is a game with no rules. You can't know exactly what gonna happened.",
-                                          True, Color('white'))
-
-    def welcome(self):
-
-        mixer.music.load(self.typing_sound)
-        mixer.music.play()
-
-        self.screen.blit(self.w, (930, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.e, (950, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.l, (970, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.c, (990, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.o, (1010, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.m, (1030, 530))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.e, (1050, 530))
-        display.flip()
-
-        time.delay(1000)
-
-        self.text_play()
-
-    def text_play(self):
-
-        self.screen.blit(self.p, (900, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.l, (920, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.a, (940, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.y, (960, 580))
-        display.flip()
-        time.delay(400)
-
-        self.text_info()
-
-    def text_info(self):
-
-        self.screen.blit(self.slash, (1000, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.i, (1040, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.n, (1060, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.f, (1080, 580))
-        display.flip()
-        time.delay(400)
-
-        self.screen.blit(self.o, (1100, 580))
-        display.flip()
-
-        mixer.music.stop()
-
-        self.loop()
 
     def play(self):
         pass
 
-    def info(self):
+    def main_loop(self):
 
-        text_animation.InfoAnimation().info()
-
-        self.answer()
-
-    def answer(self):
-
-        exit_ = False
-
-        while not exit_:
-
-            for event_ in pygame.event.get():  # main events
-
-                if event_.type == QUIT:
-                    exit_ = True
-
-                if event_.type == KEYDOWN:
-
-                    if event_.key == K_ESCAPE:
-                        exit_ = True
-
-                    if event_.key == K_DELETE:
-                        sys.exit()
-
-                    if event_.key == K_RIGHT:  # No
-                        pass
-
-                    if event_.key == K_LEFT:  # Yes
-
-                        text_animation.Dialog()
-                        display.flip()
-
-    def loop(self):
+        text_animation.InfoAnimation().welcome()
 
         exit_ = False
 
@@ -323,29 +187,8 @@ class Typing:
                         display.flip()
 
                     if event_.key == K_RIGHT:
-                        self.info()
+                        text_animation.InfoAnimation().info()
                         display.flip()
-
-    def main_loop(self):
-        exit_ = False
-
-        while not exit_:
-
-            self.welcome()
-            display.flip()
-
-            for event_ in pygame.event.get():  # main events
-
-                if event_.type == QUIT:
-                    exit_ = True
-
-                if event_.type == KEYDOWN:
-
-                    if event_.key == K_ESCAPE:
-                        exit_ = True
-
-                    if event_.key == K_DELETE:
-                        sys.exit()
 
 
 if __name__ == '__main__':
