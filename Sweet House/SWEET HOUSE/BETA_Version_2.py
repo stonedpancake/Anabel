@@ -159,7 +159,9 @@ class Typing:
         self.font = font.Font('./Materials/Kingthings Trypewriter 2.ttf', 24)
 
     def play(self):
-        pass
+
+        '''while Keyboard.Keyboard().keyboard() is not False:
+            Keyboard.Keyboard().keyboard()'''
 
     def main_loop(self):
 
@@ -183,6 +185,7 @@ class Typing:
                         sys.exit()
 
                     if event_.key == K_LEFT:
+                        # self.screen.fill((0, 0, 0))
                         self.play()
                         display.flip()
 

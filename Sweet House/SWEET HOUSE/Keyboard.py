@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from pygame import display, font, Color, time
 from pygame.constants import *
@@ -76,14 +78,23 @@ class Keyboard:
         self.eight = self.font.render('8', True, Color('white'))
         self.nine = self.font.render('9', True, Color('white'))
 
-        self.keyboard_x = 0
-        self.keyboard_y = 0
+        self.keyboard_x = 900
+        self.keyboard_y = 540
 
     def keyboard(self):
 
         for event_ in pygame.event.get():
 
+            if event_.type == QUIT:
+                return False
+
             if event_.type == KEYDOWN:
+
+                if event_.type == K_DELETE:
+                    sys.exit()
+
+                if event_.type == K_ESCAPE:
+                    return False
 
                 if event_.key == KMOD_SHIFT:
 
